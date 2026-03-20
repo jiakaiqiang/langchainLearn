@@ -1,4 +1,4 @@
-# langchainLearn
+# AI Agent Learning
 
 一个用于学习 LangChain.js 的 TypeScript 项目模板。
 
