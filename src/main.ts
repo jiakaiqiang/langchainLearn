@@ -38,13 +38,15 @@ const message = async () => {
       });
     })
   );
-
+ 
   const finalResponse = await model.invoke([
     ...messageList,
     firstResponse,
     ...toolMessages,
   ]);
-
+ console.log("toolMessages:", toolMessages);
+  console.log("messageList:", messageList);
+  console.log("firstResponse:", firstResponse);
   console.log("finalResponse:", finalResponse.content);
 };
 
