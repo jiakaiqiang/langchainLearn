@@ -10,3 +10,7 @@ const modelInter = new ChatOllama({
 export const ChatModel = () => {
   return modelInter.bindTools([getWeather]);
 };
+
+
+
+  
