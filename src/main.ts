@@ -1,7 +1,7 @@
 import { ToolMessage } from "@langchain/core/messages";
 import { ChatModel } from "./learn/llm/model";
 import { getWeather } from "./learn/tools/getWeathre";
-import { customAgent } from "./learn/agents/assistantAgent";
+import { customAgent } from "./learn/memeory/langMemeory";
 //聊天助手
 // const model = ChatModel();
 
@@ -51,10 +51,49 @@ import { customAgent } from "./learn/agents/assistantAgent";
 
 // message().catch(console.error);
 
-//agent 
-let agent = customAgent([getWeather]);
-agent.invoke({messages:[{role:"user",content:"西安的天气怎么样"}]}).then((res)=>{
-    console.log("agent res:",res);
-}).catch((err)=>{
-    console.error("agent err:",err);
-});
+//agent
+// let agent = customAgent();
+// agent.invoke({messages:[{role:"system",content:"你是一个贾凯强的私人助手，擅长天气的查询"},{role:"user",content:[{type:"text",text:"西安的天气怎么样"}]}],},{context:{userName:"贾凯强"}}).then((res)=>{
+//     console.log("agent res:",res);
+// }).catch((err)=>{
+//     console.error("agent err:",err);
+// });Save the following user: userid: abc123, name: Foo, age: 25, email: foo@langchain.dev
+//lang memory
+const result = async () => {
+  const agent = customAgent();
+
+  const saveData = await agent.invoke(
+    {
+      messages: [
+        {
+          role: "system",
+          content:
+            "你是一个用户信息管理助手，必须通过工具来保存和读取用户信息，不能自己虚构存储结果。",
+        },
+        {
+          role: "user",
+          content:
+            "请帮我保存用户信息：userid:123abc, name:贾凯强, age:18, gender:男",
+        },
+      ],
+    },
+    { context: { userName: "贾凯强" } }
+  );
+
+  console.log("saveData:", saveData);
+
+  const getData = await agent.invoke({
+    messages: [
+      {
+        role: "user",
+        content: [
+          { type: "text", text: "请根据用户id:123abc 获取用户信息" },
+        ],
+      },
+    ],
+  });
+
+  console.log("getData:", getData);
+};
+
+result();
