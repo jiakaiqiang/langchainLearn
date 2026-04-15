@@ -13,6 +13,7 @@ import { ChatOllama } from "@langchain/ollama";
 const modelInter = new ChatOllama({
   model: "qwen3.5:cloud",
   temperature: 0,
+  think: false, // 开启思考模式
 });
 
 
