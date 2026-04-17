@@ -1,9 +1,9 @@
-import { ChatOpenAI } from "@langchain/openai";
+import { ChatOllama } from "@langchain/ollama";
 
 export function createModel() {
-  return new ChatOpenAI({
-    model: "gpt-4.1-mini",
+  return new ChatOllama({
+    model: process.env.OLLAMA_MODEL ?? "qwen3.5:cloud",
     temperature: 0,
-    apiKey: process.env.OPENAI_API_KEY,
+    think: false,
   });
 }

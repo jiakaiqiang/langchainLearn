@@ -11,7 +11,7 @@
 ## 第0周：环境准备
 
 -   安装 Node.js 与 npm
--   安装 langchain 与 @langchain/openai
+-   安装 langchain 与 @langchain/ollama
 -   理解 LLM API 调用方式
 -   完成一次简单的 LLM 调用
 
@@ -19,7 +19,7 @@
 
 ``` bash
 npm init -y
-npm install langchain @langchain/openai dotenv
+npm install langchain @langchain/ollama dotenv
 ```
 
 ------------------------------------------------------------------------
