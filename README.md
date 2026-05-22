@@ -111,6 +111,7 @@ pnpm dev memory
 pnpm dev rag
 pnpm dev streaming
 pnpm dev final
+pnpm run rag:js
 ```
 
 构建项目：

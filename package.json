@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "tsx src/main.ts",
     "build": "tsc -p tsconfig.json",
-    "start": "node dist/main.js"
+    "start": "node dist/main.js",
+    "rag:js": "tsx src/demos/08-rag/index.js"
   },
   "keywords": [],
   "author": "",
